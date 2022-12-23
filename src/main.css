@@ -151,6 +151,7 @@ body {
   .active-tabs{
     background-color: #2185d0;
     color: #fff;
+    cursor: pointer;
   }
   
   .main .tabs .tab:hover{
@@ -227,6 +228,9 @@ body {
     background-color: #db2828;
     color: #fff;
     text-shadow: none;
+    position: relative;
+    left: 740px;
+    cursor: pointer;
   }
   .no-movies{
     padding: 20px 0;
