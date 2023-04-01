@@ -2,11 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import './main.css';
-import { legacy_createStore as createStore } from 'redux';
-import movies from './reducers';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers';
 // import { connect } from 'react-redux'
+//function logger(obj,next,action)
 
-const store = createStore(movies);
+// 1st way
+// const logger = function ({dispatch,getState}){
+//   return function(next){
+//     return function(action){
+//       //middleware code
+//       console.log('ACTION.TYPE =', action.type);
+//       next(action);
+//     }
+//   }
+
+// }
+
+// 2nd way
+const logger = ({dispatch,getState})=> (next)=> (action)=>{
+  // console.log('ACTION.TYPE =', action.type);
+      next(action);
+
+}
+
+
+const store = createStore(rootReducer,applyMiddleware(logger));
 // console.log('beforestate', store.getState());
 
 // store.dispatch({
